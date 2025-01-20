@@ -148,7 +148,7 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <span className="self-center text-white">Feelin` good</span>
+        <span className="self-center text-white">Feelin&apos; good</span>
       </div>
     </>
   );

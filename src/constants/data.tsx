@@ -395,6 +395,46 @@ Goal of this project was to showcase my ability to integrate with back end syste
 App also provides Google Auth, which makes authentication secure and easy to use.`,
     keyFeatures: ["Google Auth", "Responsive Design", "Back End Integration"],
   },
+  {
+    title: "ApplyWise",
+    slug: "applywise",
+    img: "/projectImages/thumbnails/applywise.png",
+    logo: "/logos/applywise.png",
+    technologies: [
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "Appwrite",
+    ],
+    link: "",
+    type: "Full Stack",
+    preview: [
+      "/projectImages/preview/ApplyWise1.png",
+      "/projectImages/preview/ApplyWise2.png",
+      "/projectImages/preview/ApplyWise3.png",
+      "/projectImages/preview/ApplyWise4.png",
+      "/projectImages/preview/ApplyWise5.png",
+    ],
+    desc: `ApplyWise is a job application tracking dashboard that allows you to see your progress in your journey.
+    
+It's easy to use, it's intuitive and you can store important files related to your applications such as resumes and CVs.
+    
+One of the best features is that you can also find your friends using ApplyWise and see their progress, thanks to the friend request system.
+
+Other cool features include extensive state management, fast changes straight into the ui without fetching the data over and over again, as well as account recovery, responsive design, partial loading of data with ability to get more as needed.`,
+    keyFeatures: [
+      "Friend Request System",
+      "Extensive State Management",
+      "Partial Data Fetching",
+      "Immediate changes directly in UI",
+      "Responsive Design",
+      "Back End Integration",
+      "Password Recovery",
+    ],
+  },
 ];
 
 export const links = [

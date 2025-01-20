@@ -50,8 +50,8 @@ const AboutMe = () => {
         ref={aboutMeText}
         className="about-me-text md:w-2/3 tracking-tight !text-3xl text-gray-400 text-justify flex flex-row flex-wrap"
       >
-        I`m a 19 year old Front End Developer based in Serbia, I enjoy learning
-        new technologies and web based skills. Currently, I`m working on
+        I&apos;m a 19 year old Front End Developer based in Serbia, I enjoy learning
+        new technologies and web based skills. Currently, I&apos;m working on
         perfecting my Back End skills so I can complete whole projects on my
         own, with confidence.
       </div>

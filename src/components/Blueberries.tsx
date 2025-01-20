@@ -14,7 +14,6 @@ const Blueberries = () => {
         scrub: true,
         start: "top bottom",
         end: "bottom start",
-        markers: true,
       },
     });
     tl.to(

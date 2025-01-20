@@ -119,7 +119,10 @@ const page = () => {
               </div>
             </div>
             <div className="flex-1 flex-shrink-0 w-full md:h-[100dvh] pt-24 md:pt-20 flex flex-col gap-4 justify-center md:sticky top-0 order-1 md:order-2">
-              <div className="h-[60vh] w-full md:h-[80%] relative drop-shadow-md shadow-gray-200">
+              <div
+                key={previewIndex}
+                className="h-[60vh] w-full md:h-[80%] relative drop-shadow-md shadow-gray-200"
+              >
                 <Image
                   src={project.preview[previewIndex]}
                   alt="image"
