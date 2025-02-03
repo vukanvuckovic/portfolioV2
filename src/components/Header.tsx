@@ -86,10 +86,10 @@ const Header = () => {
               />
             </div>
             <div className="flex flex-col gap-0.5">
-              <span className="header-text text-lg text-dark-100 font-medium leading-none">
+              <span className="header-text max-md:text-sm text-lg text-dark-100 font-medium leading-none">
                 Vukan Vuckovic
               </span>
-              <span className="header-text text-xs text-gray-500 leading-none">
+              <span className="header-text max-md:text-[10px] text-xs text-gray-500 leading-none">
                 Front End Developer
               </span>
             </div>
@@ -104,7 +104,7 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            <button className="black-button ml-10">Contact Me</button>
+            <Link href={"/contact"} className="black-button ml-10">Contact Me</Link>
           </ul>
           <button
             className="lg:hidden mr-2"
@@ -122,7 +122,7 @@ const Header = () => {
         style={{
           transform: mobileMenu ? "translateX(0%)" : "translateX(-100%)",
         }}
-        className="h-[100dvh] w-[350px] duration-500 ease-out lg:hidden flex flex-col gap-4 p-6 fixed top-0 left-0 bg-black bg-opacity-20 backdrop-blur-xl z-50"
+        className="h-[100dvh] w-full max-w-[350px] duration-500 ease-out lg:hidden flex flex-col gap-4 p-6 fixed top-0 left-0 bg-black bg-opacity-20 backdrop-blur-xl z-50"
       >
         <div className="flex flex-row items-center justify-between">
           <h2 className="text-white tracking-tighter">Vukan Vuckovic</h2>

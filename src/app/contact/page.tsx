@@ -49,11 +49,11 @@ const Contact = () => {
     <>
       <div className="flex flex-col w-full max-w-[1400px] 2xl:max-w-[1560px] mx-auto px-4">
         <Header />
-        <div className="flex flex-col pt-24 pb-12 min-h-[100dvh]">
+        <div className="flex flex-col pt-24 pb-12 min-h-[100vh]">
           <h1 className="py-10">Let's Collaborate!</h1>
-          <div className="flex flex-col md:flex-row justify-between min-h-[80dvh] max-md:gap-8 gap-6">
+          <div className="flex flex-col md:flex-row justify-between min-h-[80vh] max-md:gap-8 gap-6">
             <div
-              className={`md:w-2/5 max-md:h-[50dvh] flex-shrink-0 flex flex-col justify-end p-6 bg-[url("/background/green-bg3.png")] bg-cover bg-center rounded-2xl overflow-hidden`}
+              className={`md:w-2/5 max-md:h-[50vh] flex-shrink-0 flex flex-col justify-end p-6 bg-[url("/background/green-bg3.png")] bg-cover bg-center rounded-2xl overflow-hidden`}
             >
               <h2 className="max-md:!text-lg !text-xl">
                 Everything starts with communication! <br />
@@ -66,12 +66,12 @@ const Contact = () => {
                 className="flex-1 flex flex-col gap-4"
               >
                 <h2 className="mb-4">Tell me about your vision!</h2>
-                <div className="flex flex-row gap-4">
+                <div className="flex max-md:flex-col flex-row gap-4">
                   <input
                     required
                     placeholder="Name"
                     type="text"
-                    className="flex-1 input-field"
+                    className="flex-1 py-2 input-field"
                     onChange={(val) =>
                       updateData({
                         field: "name",
@@ -84,7 +84,7 @@ const Contact = () => {
                     required
                     placeholder="Email"
                     type="email"
-                    className="flex-1 input-field"
+                    className="flex-1 py-2 input-field"
                     onChange={(val) =>
                       updateData({
                         field: "email",
@@ -101,7 +101,7 @@ const Contact = () => {
                   value={formData.purpose}
                   required
                 >
-                  <SelectTrigger className="bg-white input-field w-full shadow-none">
+                  <SelectTrigger className="bg-white input-field py-2 w-full shadow-none">
                     <SelectValue
                       className="!text-gray-200 !placeholder-gray-200 outline-none"
                       placeholder={

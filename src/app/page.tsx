@@ -1,5 +1,4 @@
 "use client";
-import Blueberries from "@/components/Blueberries";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import InstagramSec from "@/components/Instagram";
@@ -12,7 +11,7 @@ import React from "react";
 
 const Root = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col overflow-x-hidden">
       <div className="flex flex-col w-full max-w-[1400px] 2xl:max-w-[1560px] mx-auto px-4">
         <Header />
         <Hero />
@@ -29,7 +28,6 @@ const Root = () => {
           <InstagramSec />
         </div>
       </div>
-      <Blueberries />
       <Footer />
     </div>
   );

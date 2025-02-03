@@ -409,7 +409,7 @@ App also provides Google Auth, which makes authentication secure and easy to use
       "Tailwind CSS",
       "Appwrite",
     ],
-    link: "",
+    link: "https://apply-wise.vercel.app",
     type: "Full Stack",
     preview: [
       "/projectImages/preview/ApplyWise1.png",
@@ -450,10 +450,6 @@ export const links = [
     title: "My Journey",
     url: "/#myJourney",
   },
-  // {
-  //   title: "Leet Code",
-  //   url: "/leetcode",
-  // },
 ];
 
 export const socialLinks = [
@@ -475,7 +471,7 @@ export const socialLinks = [
         color="white"
       />
     ),
-    url: "https://gmail.com",
+    url: "mailto:vukanvuckovic05@gmail.com",
   },
   {
     title: "GitHub",

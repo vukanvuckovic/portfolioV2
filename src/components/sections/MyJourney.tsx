@@ -10,7 +10,7 @@ const TimelineElement = ({ text, now }: { text: string; now?: boolean }) => {
         now ? "border-blue-300 shadow-md shadow-blue-100" : "border-gray-200"
       }`}
     >
-      <span className={`${now ? "text-gray-500" : "text-gray-400"}`}>
+      <span className={`max-md:text-xs leading-tight ${now ? "text-gray-500" : "text-gray-400"}`}>
         {text}
       </span>
     </div>
@@ -64,8 +64,8 @@ const MyJourney = () => {
         </span>
         <h1 className="leading-none tracking-tighter">My Journey</h1>
       </div>
-      <div className="flex flex-row gap-5">
-        <div className="flex-shrink-0 px-5 flex flex-col gap-8 items-center">
+      <div className="flex flex-row gap-4 md:gap-5">
+        <div className="flex-shrink-0 md:px-5 flex flex-col gap-8 items-center">
           <div className="timeline flex flex-col items-center h-full w-[1px] rounded-full bg-[linear-gradient(#d1d5db,#f3f4f6)] relative">
             <div className="timeline-thumb flex justify-center items-center w-4 h-4 bg-blue-400 rounded-full absolute top-0">
               <div className="timeline-thumb-glow h-4 w-4 blur-sm rounded-full bg-blue-400" />

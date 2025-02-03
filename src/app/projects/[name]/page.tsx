@@ -69,9 +69,9 @@ const page = () => {
                     width={40}
                     className="object-cover rounded-lg"
                   />
-                  <h2 className="mt-1 leading-none">{project.title}</h2>
+                  <h2 className="mt-1 leading-none font-medium">{project.title}</h2>
                 </div>
-                <span className="text-sm md:text-base whitespace-pre-wrap my-4">
+                <span className="text-xs md:text-sm lg:text-base whitespace-pre-wrap my-4">
                   {project.desc}
                 </span>
                 <div className="flex flex-row items-center justify-between">
@@ -112,13 +112,13 @@ const page = () => {
                         size={18}
                         color="green"
                       />
-                      <span className="select-none text-lg">{item}</span>
+                      <span className="select-none max-md:text-sm text-lg">{item}</span>
                     </li>
                   ))}
                 </ul>
               </div>
             </div>
-            <div className="flex-1 flex-shrink-0 w-full md:h-[100dvh] pt-24 md:pt-20 flex flex-col gap-4 justify-center md:sticky top-0 order-1 md:order-2">
+            <div className="flex-1 flex-shrink-0 w-full md:h-[100vh] pt-24 md:pt-20 flex flex-col gap-4 justify-center md:sticky top-0 order-1 md:order-2">
               <div
                 key={previewIndex}
                 className="h-[60vh] w-full md:h-[80%] relative drop-shadow-md shadow-gray-200"

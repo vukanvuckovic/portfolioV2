@@ -153,8 +153,8 @@ const InstagramSec = () => {
         </h2>
       </div>
       <div className="post-sec opacity-0 grid grid-cols-3 md:grid-cols-5 gap-4 md:gap-6 z-10 drop-shadow-sm shadow-gray-100 relative">
-        <div className="w-[40%] h-[60%] rounded-full bg-blue-300 blur-lg opacity-10 absolute top-0 left-0" />
-        <div className="w-[40%] h-[60%] rounded-full bg-blue-300 blur-2xl opacity-10 absolute bottom-0 right-0" />
+        <div className="max-lg:hidden w-[40%] h-[60%] rounded-full bg-blue-300 blur-lg opacity-10 absolute top-0 left-0" />
+        <div className="max-lg:hidden w-[40%] h-[60%] rounded-full bg-blue-300 blur-2xl opacity-10 absolute bottom-0 right-0" />
         <div className="big-sec md:main-img col-span-3 max-md:aspect-square md:col-span-2 md:row-span-2 relative rounded-lg bg-white bg-opacity-20 backdrop-blur-2xl overflow-hidden border-[1px] border-gray-200">
           <Image
             src={"/mockups/instagram.png"}
