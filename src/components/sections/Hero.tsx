@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Hero = () => {
@@ -8,12 +9,17 @@ const Hero = () => {
         Crafting digital art with precision.
       </h1>
       <div className="flex flex-row items-center gap-4">
-        <button className="black-button max-md:text-sm">Projects</button>
+        <Link href="/#projects" className="black-button max-md:text-sm">
+          Projects
+        </Link>
         <span className="text-lg text-gray-800">or</span>
         <div className="flex flex-col gap-0.5 w-fit group">
-          <button className="text-dark-200 max-md:text-sm text-lg leading-none">
+          <Link
+            href="/#techStack"
+            className="text-dark-200 max-md:text-sm text-lg leading-none"
+          >
             Tech Stack
-          </button>
+          </Link>
           <div className="w-full h-[1px] bg-dark-200 group-hover:w-0 duration-200 ease-out" />
         </div>
       </div>

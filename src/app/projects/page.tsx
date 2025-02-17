@@ -1,9 +1,5 @@
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation";
 
-const page = () => {
-  return (
-    redirect ("/")
-  )
+export default function Page() {
+  redirect("/");
 }
-
-export default page

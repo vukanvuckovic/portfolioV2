@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import { Chart } from "../Chart";
 
-const SkillItem = ({ icon, title }: { icon?: any; title?: string }) => {
+const SkillItem = ({ icon, title }: { icon?: React.ReactNode; title?: string }) => {
   return (
     <div className="flex flex-row items-center gap-2">
       <div className="flex-shrink-0">{icon}</div>

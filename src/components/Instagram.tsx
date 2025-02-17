@@ -3,12 +3,14 @@
 import { Message2, Save2, Heart } from "iconsax-react";
 import { Share } from "lucide-react";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { posts } from "@/constants/data";
 import Link from "next/link";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const InstagramPost = ({ img }: { img: string }) => {
   const [liked, setLiked] = useState(true);
@@ -59,8 +61,6 @@ const InstagramPost = ({ img }: { img: string }) => {
 };
 
 const InstagramSec = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   useGSAP(() => {
     gsap.from(".infinite-vertical-scroll", {
       transform: "translateY(-50%)",

@@ -5,8 +5,9 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Projects = () => {
-  gsap.registerPlugin(ScrollTrigger);
 
   useGSAP(() => {
     const tl3 = gsap.timeline({

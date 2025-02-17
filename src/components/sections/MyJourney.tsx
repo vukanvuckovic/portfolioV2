@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React from "react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const TimelineElement = ({ text, now }: { text: string; now?: boolean }) => {
   return (
     <div
@@ -18,8 +20,6 @@ const TimelineElement = ({ text, now }: { text: string; now?: boolean }) => {
 };
 
 const MyJourney = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {

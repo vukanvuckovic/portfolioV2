@@ -11,37 +11,47 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    purpose: undefined,
-    message: "",
-  });
+interface FormData {
+  name: string;
+  email: string;
+  purpose: string | undefined;
+  message: string;
+}
 
-  const updateData = ({ field, value }: { field: string; value: string }) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+const EMPTY_FORM: FormData = { name: "", email: "", purpose: undefined, message: "" };
+
+const Contact = () => {
+  const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const updateField = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("loading");
 
-    const response = await fetch("/api/send-email", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const result = await response.json();
+      const result = await response.json();
 
-    if (response.ok) {
-      alert("Message sent successfully!");
-      setFormData({ name: "", email: "", purpose: undefined, message: "" });
-    } else {
-      alert(`Failed to send message: ${result.message}`);
+      if (response.ok) {
+        setStatus("success");
+        setFormData(EMPTY_FORM);
+      } else {
+        setStatus("error");
+        setErrorMessage(result.message ?? "Something went wrong.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Failed to send message. Please try again.");
     }
   };
 
@@ -50,7 +60,7 @@ const Contact = () => {
       <div className="flex flex-col w-full max-w-[1400px] 2xl:max-w-[1560px] mx-auto px-4">
         <Header />
         <div className="flex flex-col pt-24 pb-12 min-h-[100vh]">
-          <h1 className="py-10">Let's Collaborate!</h1>
+          <h1 className="py-10">Let&apos;s Collaborate!</h1>
           <div className="flex flex-col md:flex-row justify-between min-h-[80vh] max-md:gap-8 gap-6">
             <div
               className={`md:w-2/5 max-md:h-[50vh] flex-shrink-0 flex flex-col justify-end p-6 bg-[url("/background/green-bg3.png")] bg-cover bg-center rounded-2xl overflow-hidden`}
@@ -61,10 +71,7 @@ const Contact = () => {
               </h2>
             </div>
             <div className="md:w-1/2 flex-shrink-0 flex flex-col">
-              <form
-                onSubmit={handleSubmit}
-                className="flex-1 flex flex-col gap-4"
-              >
+              <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-4">
                 <h2 className="mb-4">Tell me about your vision!</h2>
                 <div className="flex max-md:flex-col flex-row gap-4">
                   <input
@@ -72,12 +79,7 @@ const Contact = () => {
                     placeholder="Name"
                     type="text"
                     className="flex-1 py-2 input-field"
-                    onChange={(val) =>
-                      updateData({
-                        field: "name",
-                        value: val.currentTarget.value,
-                      })
-                    }
+                    onChange={(e) => updateField("name", e.target.value)}
                     value={formData.name}
                   />
                   <input
@@ -85,29 +87,19 @@ const Contact = () => {
                     placeholder="Email"
                     type="email"
                     className="flex-1 py-2 input-field"
-                    onChange={(val) =>
-                      updateData({
-                        field: "email",
-                        value: val.currentTarget.value,
-                      })
-                    }
+                    onChange={(e) => updateField("email", e.target.value)}
                     value={formData.email}
                   />
                 </div>
                 <Select
-                  onValueChange={(val) =>
-                    updateData({ field: "purpose", value: val })
-                  }
+                  onValueChange={(val) => updateField("purpose", val)}
                   value={formData.purpose}
                   required
                 >
                   <SelectTrigger className="bg-white input-field py-2 w-full shadow-none">
                     <SelectValue
-                      className="!text-gray-200 !placeholder-gray-200 outline-none"
                       placeholder={
-                        <span className="text-gray-400">
-                          How can I help you?
-                        </span>
+                        <span className="text-gray-400">How can I help you?</span>
                       }
                     />
                   </SelectTrigger>
@@ -124,15 +116,23 @@ const Contact = () => {
                   rows={5}
                   placeholder="Your Message"
                   required
-                  onChange={(val) =>
-                    updateData({
-                      field: "message",
-                      value: val.currentTarget.value,
-                    })
-                  }
+                  onChange={(e) => updateField("message", e.target.value)}
                   value={formData.message}
                 />
-                <button className="neon-button">Submit</button>
+                {status === "success" && (
+                  <span className="text-green-600 text-sm">
+                    Message sent successfully!
+                  </span>
+                )}
+                {status === "error" && (
+                  <span className="text-red-500 text-sm">{errorMessage}</span>
+                )}
+                <button
+                  className="neon-button disabled:opacity-50"
+                  disabled={status === "loading"}
+                >
+                  {status === "loading" ? "Sending..." : "Submit"}
+                </button>
               </form>
             </div>
           </div>

@@ -3,38 +3,26 @@
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { projects } from "@/constants/data";
+import { Project } from "@/types";
 import { ArrowLeft2, ArrowRight, ArrowRight2 } from "iconsax-react";
 import Image from "next/image";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Loader2Icon } from "lucide-react";
 
-const page = () => {
-  const params = useParams(); // Access route parameters.
-  const [project, setProject] = useState<(typeof projects)[0] | undefined>(
-    undefined
-  );
+const ProjectPage = () => {
+  const params = useParams();
+  const [project, setProject] = useState<Project | undefined>(undefined);
   const [previewIndex, setPreviewIndex] = useState(0);
 
   useGSAP(() => {
     gsap.fromTo(
       ".previewImage",
-      {
-        scale: 1.05,
-        filter: "blur(10px)",
-        ease: "power3.out",
-        duration: 1,
-        opacity: 0,
-      },
-      {
-        scale: 1,
-        filter: "blur(0px)",
-        ease: "power3.out",
-        duration: 1,
-        opacity: 1,
-      }
+      { scale: 1.05, filter: "blur(10px)", opacity: 0 },
+      { scale: 1, filter: "blur(0px)", opacity: 1, ease: "power3.out", duration: 1 }
     );
     gsap.to(".loader", {
       rotate: 360,
@@ -46,9 +34,8 @@ const page = () => {
 
   useEffect(() => {
     if (params?.name && typeof params.name === "string") {
-      const projectName = params.name;
       setProject(
-        projects.find((item) => item.slug.toLowerCase() === projectName)
+        projects.find((item) => item.slug.toLowerCase() === params.name)
       );
     }
   }, [params]);
@@ -75,16 +62,26 @@ const page = () => {
                   {project.desc}
                 </span>
                 <div className="flex flex-row items-center justify-between">
-                  <button className="flex flex-row items-center gap-2 group">
-                    <span className="leading-none text-sm sm:text-base md:text-lg text-gray-600">
-                      Live Website
+                  {project.link ? (
+                    <Link
+                      href={project.link}
+                      target="_blank"
+                      className="flex flex-row items-center gap-2 group"
+                    >
+                      <span className="leading-none text-sm sm:text-base md:text-lg text-gray-600">
+                        Live Website
+                      </span>
+                      <ArrowRight
+                        size={16}
+                        color="#4b5563"
+                        className="-rotate-45 group-hover:-rotate-90 duration-200"
+                      />
+                    </Link>
+                  ) : (
+                    <span className="leading-none text-sm sm:text-base md:text-lg text-gray-400">
+                      No live link
                     </span>
-                    <ArrowRight
-                      size={16}
-                      color="#4b5563"
-                      className="-rotate-45 group-hover:-rotate-90 duration-200"
-                    />
-                  </button>
+                  )}
                   <span className="flex-shrink-0 text-sm md:text-lg leading-none">
                     [ {project.type} ]
                   </span>
@@ -108,10 +105,7 @@ const page = () => {
                       key={index}
                       className="flex flex-row items-center gap-2 hover:gap-3 duration-200"
                     >
-                      <ArrowRight
-                        size={18}
-                        color="green"
-                      />
+                      <ArrowRight size={18} color="green" />
                       <span className="select-none max-md:text-sm text-lg">{item}</span>
                     </li>
                   ))}
@@ -125,7 +119,7 @@ const page = () => {
               >
                 <Image
                   src={project.preview[previewIndex]}
-                  alt="image"
+                  alt="preview"
                   fill
                   className="object-contain previewImage opacity-0"
                 />
@@ -139,20 +133,15 @@ const page = () => {
                   }
                   className="flex justify-center items-center h-8 w-8 border-[1px] border-gray-300 rounded-full hover:scale-[105%] duration-150 bg-[linear-gradient(#f3f4f6,white)]"
                 >
-                  <ArrowLeft2
-                    color="#9ca3af"
-                    size={18}
-                  />
+                  <ArrowLeft2 color="#9ca3af" size={18} />
                 </button>
                 <div className="h-8 px-3 flex flex-row items-center gap-2 border-[1px] border-gray-300 rounded-full bg-[linear-gradient(#f3f4f6,white)]">
                   {project.preview.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setPreviewIndex(index)}
-                      className={`h-2 w-2 rounded-full ${
-                        previewIndex === index
-                          ? "bg-gray-400 w-6"
-                          : "bg-gray-300"
+                      className={`h-2 rounded-full ${
+                        previewIndex === index ? "bg-gray-400 w-6" : "bg-gray-300 w-2"
                       } duration-500`}
                     />
                   ))}
@@ -165,21 +154,14 @@ const page = () => {
                   }
                   className="flex justify-center items-center h-8 w-8 border-[1px] border-gray-300 rounded-full hover:scale-[105%] duration-150 bg-[linear-gradient(#f3f4f6,white)]"
                 >
-                  <ArrowRight2
-                    color="#9ca3af"
-                    size={18}
-                  />
+                  <ArrowRight2 color="#9ca3af" size={18} />
                 </button>
               </div>
             </div>
           </div>
         ) : (
           <div className="h-[100dvh] w-full flex justify-center items-center">
-            <Loader2Icon
-              size={50}
-              color="green"
-              className="loader"
-            />
+            <Loader2Icon size={50} color="green" className="loader" />
           </div>
         )}
       </div>
@@ -188,4 +170,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProjectPage;

@@ -14,7 +14,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        console.log("Creating transporter...");
         const transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {

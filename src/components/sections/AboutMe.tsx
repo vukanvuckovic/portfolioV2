@@ -3,11 +3,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React, { useEffect, useRef, useState } from "react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const AboutMe = () => {
   const aboutMeText = useRef<HTMLDivElement>(null);
   const [textReady, setTextReady] = useState(false);
-
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     if (aboutMeText.current) {

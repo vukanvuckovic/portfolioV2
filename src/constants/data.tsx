@@ -229,7 +229,7 @@ export const technologies = [
   },
   {
     name: "Redux",
-    icon: "/icons/appwrite.png",
+    icon: "/icons/redux.png",
     level: 2,
   },
 ];
